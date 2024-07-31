@@ -1,20 +1,26 @@
 body{
     margin: 0;
-    background-color: #056679;
-    font-family: sans-serif;
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        font-family: sans-serif;
 }
 .todo-container{
      
     width: 350px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    /* position: absolute; */
+    /* left: 50%; */
+    /* top: 50%; */
+    /* transform: translate(-50%,-50%); */
+    margin: auto;
     text-align: center;
+    margin-top: 30px;
 }
 .input-section {
-    background-color: #055565;
-    padding: 18px;
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        padding: 18px;
     border-radius: 10px;
     box-shadow: 0 4px 6px #00000066;
 
@@ -32,8 +38,10 @@ h1{
     padding: 10px;
     box-sizing: border-box;
     box-shadow: 0 4px 6px #00000066;
-    background-color: #056679;
-    outline: none;
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        outline: none;
     color: #4bafc4;
 
 }
@@ -49,8 +57,10 @@ ul{
 }
 ul li{
     list-style: none;
-    background-color: #055565;
-    padding: 15px;
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        padding: 15px;
     border-radius: 5px;
     margin-bottom: 10px;
     color: #08869e;
@@ -61,4 +71,34 @@ ul li i{
     text-align: right;
     flex: 1;
     cursor: pointer;
+    
+    
 }
+li i {
+    cursor: pointer;
+  }
+  
+  li i.fa-pen {
+    color: #007bff; /* Blue color for the edit icon */
+    text-align: right;
+    flex: 5;
+
+  }
+  
+  li i.fa-trash-can {
+    color: #dc3545; /* Red color for the delete icon */
+  }
+  .editInput{
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #106879;
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px #00000066;
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        outline: none;
+    color: #4bafc4;
+  }

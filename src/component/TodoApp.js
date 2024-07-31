@@ -5,8 +5,11 @@ export default class TodoApp extends Component {
   state = {
     input: "",
     items: [],
+    editIndex: -1,
+    editInput: ""
   };
-  handlChange = (event) => {
+
+  handleChange = (event) => {
     this.setState({
       input: event.target.value,
     });
@@ -14,47 +17,80 @@ export default class TodoApp extends Component {
 
   storeItems = (event) => {
     event.preventDefault();
-    const { input } = this.state;
-
+    const { input, items } = this.state;
     this.setState({
-      items: [...this.state.items, input],
-      input: "", //spread operators
+      items: [...items, input],
+      input: "",
     });
   };
 
   deleteItem = (index) => {
-    const allItems = this.state.items;
-    allItems.splice(index, 1);
+    const items = this.state.items.filter((_, i) => i !== index);
+    this.setState({ items });
+  };
 
+  startEditItem = (index) => {
     this.setState({
-      items: allItems,
-
-      //items : this.state.items.filter((data,index) => index !== index)
+      editIndex: index,
+      editInput: this.state.items[index],
     });
   };
+
+  handleEditChange = (event) => {
+    this.setState({ editInput: event.target.value });
+  };
+
+  saveItem = (index) => {
+    const items = [...this.state.items];
+    items[index] = this.state.editInput;
+    this.setState({
+      items,
+      editIndex: -1,
+      editInput: "",
+    });
+  };
+
   render() {
-    const { input, items } = this.state; //destructuring
+    const { input, items, editIndex, editInput } = this.state;
+
     return (
       <div className="todo-container">
         <form className="input-section" onSubmit={this.storeItems}>
           <h1>Todo App</h1>
-
           <input
             type="text"
             value={input}
-            onChange={this.handlChange}
+            onChange={this.handleChange}
             placeholder="Enter items ..."
           />
         </form>
 
         <ul>
-          {items.map((data, index) => (
+          {items.map((item, index) => (
             <li key={index}>
-              {data}{" "}
-              <i
-                onClick={() => this.deleteItem(index)}
-                className="fa-solid fa-trash-can"
-              ></i>
+              {editIndex === index ? (
+                <>
+                  <input
+                    className="editInput"
+                    type="text"
+                    value={editInput}
+                    onChange={this.handleEditChange}
+                  />
+                  <button onClick={() => this.saveItem(index)}>Save</button>
+                </>
+              ) : (
+                <>
+                  {item}
+                  <i
+                    onClick={() => this.startEditItem(index)}
+                    className="fa-solid fa-pen"
+                  ></i>
+                  <i
+                    onClick={() => this.deleteItem(index)}
+                    className="fa-solid fa-trash-can"
+                  ></i>
+                </>
+              )}
             </li>
           ))}
         </ul>
